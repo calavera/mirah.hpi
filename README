@@ -1,0 +1,24 @@
+Mirah.hpi
+---------
+
+Trying to write a Hudson's plugin with Mirah.
+
+Compile and test it with Hudson
+-------------------------------
+
+This plugin assumes you have Mirah and JRuby compiled into a sibling
+directory, if not execute this before:
+
+cd .. && git clone git://github.com/jruby/jruby.git && cd jruby && ant jar-complete
+cd .. && git clone git://github.com/mirah/mirah.git && cd mirah && jruby -S rake jar:complete
+
+mvn hpi:run
+
+Current status
+--------------
+
+The plugin compiles and it's detected by Hudson but the extension point
+doesn't appear anywhere. My hint is that Hudson cannot detect which kind of
+extension is because the descriptor class, line 42 in
+hello_world_builder.mirah, doesn't use the generic <Builder>
+and Mirah doesn't support generics right away.
