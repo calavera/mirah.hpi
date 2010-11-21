@@ -36,15 +36,15 @@
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
           <execution>
-            <id>compile</id>
-            <phase>compile</phase><!--Change this to control when it runs -->
+            <id>compile-mirah</id>
+            <phase>process-classes</phase><!--Change this to control when it runs -->
             <configuration>
               <tasks>
                 <property name="compile_classpath" refid="maven.compile.classpath"/>
                 <property name="mirah_classpath" value="../mirah/dist/mirah-complete.jar:../jruby/lib/jruby-complete.jar"/>
 
                 <taskdef name="mirah" classname="org.mirah.ant.Compile" classpath="${mirah_classpath}"/>
-                <mirah src="hello_world_builder.mirah" destdir="target" classpath="${compile_classpath}:${mirah_classpath}"/>
+                <mirah src="hello_world_builder.mirah" destdir="target/classes" classpath="${compile_classpath}:${mirah_classpath}:target/classes"/>
               </tasks>
             </configuration>
             <goals>
