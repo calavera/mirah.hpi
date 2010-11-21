@@ -18,7 +18,10 @@ Current status
 --------------
 
 The plugin compiles and it's detected by Hudson but the extension point
-doesn't appear anywhere. My hint is that Hudson cannot detect which kind of
-extension is because the descriptor class, line 42 in
-hello_world_builder.mirah, doesn't use the generic <Builder>
-and Mirah doesn't support generics right away.
+doesn't appear anywhere.
+
+As soon as we can make mirah generate public static final fields rather than private
+static fields for the descriptor in that line the plugin will be fully
+functional:
+
+https://github.com/calavera/mirah.hpi/blob/master/hello_world_builder.mirah#L22
