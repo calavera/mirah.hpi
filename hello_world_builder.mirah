@@ -19,7 +19,10 @@ import java.io.IOException
 class HelloWorldBuilder < Builder
 
   $Extension
-  @@descriptor = DescriptorImpl.new(HelloWorldBuilder.class)
+  def self.getExtension
+    @@extension = DescriptorImpl.new(HelloWorldBuilder.class)
+    @@extension
+  end
 
   $DataBoundConstructor
   def initialize(name:String)
@@ -36,7 +39,7 @@ class HelloWorldBuilder < Builder
   end
 
   def getDescriptor
-    @@descriptor
+    @@extension
   end
 
   class DescriptorImpl < BuilderStepDescriptor
@@ -51,10 +54,6 @@ class HelloWorldBuilder < Builder
 
     def getDisplayName
       "Mirah plugin"
-    end
-
-    def isApplicable(clazz:Class)
-      true
     end
   end
 end
