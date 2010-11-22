@@ -16,12 +16,10 @@ import org.kohsuke.stapler.QueryParameter
 import javax.servlet.ServletException
 import java.io.IOException
 
-class HelloWorldBuilder < Builder
-
+class HelloMirahBuilder < Builder
   $Extension
   def self.getExtension
-    @@extension = DescriptorImpl.new(HelloWorldBuilder.class)
-    @@extension
+    @@extension ||= DescriptorImpl.new(HelloMirahBuilder.class)
   end
 
   $DataBoundConstructor
