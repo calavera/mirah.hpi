@@ -32,27 +32,51 @@
           </dependency>
         </dependencies>
       </plugin>
-      <plugin>
+      <!-- USE THIS PLUGIN TO TRANSFORM MIRAH CODE IN JAVA SOURCE CODE -->
+      <!--plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
           <execution>
             <id>compile-mirah</id>
-            <phase>process-classes</phase><!--Change this to control when it runs -->
+            <phase>validate</phase>
             <configuration>
               <tasks>
                 <property name="compile_classpath" refid="maven.compile.classpath"/>
                 <property name="mirah_classpath" value="../mirah/dist/mirah-complete.jar:../jruby/lib/jruby-complete.jar"/>
 
                 <taskdef name="mirah" classname="org.mirah.ant.Compile" classpath="${mirah_classpath}"/>
-                <mirah src="hello_world_builder.mirah" destdir="target/classes" classpath="${compile_classpath}:${mirah_classpath}:target/classes"/>
+                <mirah src="hello_world_builder.mirah" destdir="src/main/java" bytecode="false" classpath="${compile_classpath}:${mirah_classpath}:target/classes"/>
               </tasks>
             </configuration>
             <goals>
-              <goal>run</goal><!-- this is to call antrun:run -->
+              <goal>run</goal>
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin-->
+
+      <!-- USE THIS PLUGIN TO TRANSFORM MIRAH CODE IN JAVA CLASSES -->
+      <!--plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>compile-mirah</id>
+            <phase>process-classes</phase>
+            <configuration>
+              <tasks>
+                <property name="compile_classpath" refid="maven.compile.classpath"/>
+                <property name="mirah_classpath" value="../mirah/dist/mirah-complete.jar:../jruby/lib/jruby-complete.jar"/>
+
+                <taskdef name="mirah" classname="org.mirah.ant.Compile" classpath="${mirah_classpath}"/>
+                <mirah src="hello_world_builder.mirah" verbose="true" destdir="target/classes" classpath="${compile_classpath}:${mirah_classpath}:target/classes"/>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin-->
     </plugins>
   </build>
 
