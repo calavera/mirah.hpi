@@ -11,7 +11,13 @@ directory, if not execute this before:
 
 cd .. && git clone git://github.com/mirah/mirah.git && cd mirah && jruby -S rake jar:complete
 
-mvn clean process-classes hpi:run
+The build is still quite hacky and it needs few steps:
+
+  # Comment the antrun plugin into the pom.xml and execute `mvn compile`,
+    this will compile the mirah dependencies and wrappers.
+  # Uncomment the plugin and execute the same command again, this will
+    generate the java source code from Mirah and will compile it.
+  # Run `mvn hpi:run` to load the hudson test instance.
 
 If we want to generate the java source code we need to uncomment the right
 plugin into the pom.xml run `mvn validate` that generates the java source code, comment
