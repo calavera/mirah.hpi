@@ -6,13 +6,16 @@ Trying to write a Hudson's plugin with Mirah.
 Compile and test it with Hudson
 -------------------------------
 
-This plugin assumes you have Mirah and JRuby compiled into a sibling
+This plugin assumes you have Mirah compiled into a sibling
 directory, if not execute this before:
 
-cd .. && git clone git://github.com/jruby/jruby.git && cd jruby && ant jar-complete
 cd .. && git clone git://github.com/mirah/mirah.git && cd mirah && jruby -S rake jar:complete
 
-mvn hpi:run
+mvn clean process-classes hpi:run
+
+If we want to generate the java source code we need to uncomment the right
+plugin into the pom.xml run `mvn validate` that generates the java source code, comment
+both ant plugins into the pom.xml and run `mvn comile`.
 
 Current status
 --------------
@@ -20,8 +23,5 @@ Current status
 The plugin compiles and it's detected by Hudson but the extension point
 doesn't appear anywhere.
 
-As soon as we can make mirah generate public static final fields rather than private
-static fields for the descriptor in that line the plugin will be fully
-functional:
-
-https://github.com/calavera/mirah.hpi/blob/master/hello_world_builder.mirah#L22
+If we generate the java source code from the mirah source code and we
+compile it the plugin works like a charm.
