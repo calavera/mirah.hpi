@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.jvnet.hudson.plugins</groupId>
     <artifactId>plugin</artifactId>
-    <version>1.376</version>
+    <version>1.387</version>
   </parent>
 
   <artifactId>helloWorld</artifactId>
@@ -14,11 +14,18 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <forkMode>never</forkMode>
-        </configuration>
+        <groupId>org.mirah.maven</groupId>
+        <artifactId>maven-mirah-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals><goal>compile</goal></goals>
+          </execution>
+        </executions>
+          <configuration>
+            <bytecode>false</bytecode>
+            <outputDirectory>src/main/java</outputDirectory>
+          </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -32,42 +39,19 @@
           </dependency>
         </dependencies>
       </plugin>
-      <!-- ###################################### -->
-      <!-- WARNING:
-             Comment this plugin the first time you want to compile the
-             code. The java wrappers are still in this project and Mirah
-             compiler will fail if the wrappers are not compiled first.
-      -->
-      <!-- ###################################### -->
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>compile-mirah</id>
-            <phase>validate</phase>
-            <configuration>
-              <tasks>
-                <property name="compile_classpath" refid="maven.compile.classpath"/>
-                <property name="mirah_classpath" value="../mirah/dist/mirah-complete.jar"/>
-
-                <taskdef name="mirah" classname="org.mirah.ant.Compile" classpath="${mirah_classpath}"/>
-                <mirah src="hello_world_builder.mirah" destdir="src/main/java" verbose="true" bytecode="false" classpath="${compile_classpath}:${mirah_classpath}:target/classes"/>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
 
   <dependencies>
     <dependency>
-      <groupId>org.jruby</groupId>
-      <artifactId>jruby-complete</artifactId>
-      <version>1.5.5</version>
+      <groupId>org.mirah.hudson</groupId>
+      <artifactId>hudson-mirah-wrappers</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.hudson.main</groupId>
+      <artifactId>hudson-core</artifactId>
+      <version>1.387</version>
     </dependency>
   </dependencies>
 </project>
