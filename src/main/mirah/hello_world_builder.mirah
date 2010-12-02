@@ -6,6 +6,7 @@ import hudson.tasks.*
 
 import net.sf.json.JSONObject
 import org.kohsuke.stapler.*
+import org.mirah.hudson.descriptors.*
 
 class HelloMirahBuilder < Builder
   $Extension
