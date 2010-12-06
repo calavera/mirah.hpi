@@ -2,6 +2,7 @@ Mirah.hpi
 ---------
 
 Hudson's plugin to execute Mirah scripts. Mirah and JRuby must be in the Hudson's path.
+The plugin's source code is also written with Mirah.
 
 Compile and test it with Hudson
 -------------------------------
