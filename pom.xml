@@ -18,7 +18,7 @@
         <artifactId>maven-mirah-plugin</artifactId>
         <executions>
           <execution>
-            <phase>validate</phase>
+            <phase>compile</phase>
             <goals><goal>compile</goal></goals>
           </execution>
         </executions>
