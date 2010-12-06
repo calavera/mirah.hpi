@@ -1,7 +1,7 @@
 Mirah.hpi
 ---------
 
-Trying to write a Hudson's plugin with Mirah.
+Hudson's plugin to execute Mirah scripts. Mirah and JRuby must be in the Hudson's path.
 
 Compile and test it with Hudson
 -------------------------------
