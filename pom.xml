@@ -6,10 +6,10 @@
     <version>1.387</version>
   </parent>
 
-  <artifactId>helloWorld</artifactId>
+  <artifactId>mirah</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>hpi</packaging>
-  <name>Hello plugin</name>
+  <name>Mirah script plugin</name>
 
   <build>
     <plugins>
