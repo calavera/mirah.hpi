@@ -1,0 +1,9 @@
+<% view do %>
+  <% entry 'Verbose', :description => 'Show Mirah AST generation' do %>
+    <%= checkbox 'verbose' %>
+  <% end %>
+
+  <% entry 'Script', :description => 'Mirah script' do %>
+    <%= textarea 'command' %>
+  <% end %>
+<% end %>
