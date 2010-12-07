@@ -16,9 +16,9 @@
       <plugin>
         <groupId>org.mirah.maven</groupId>
         <artifactId>maven-mirah-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
         <executions>
           <execution>
-            <phase>compile</phase>
             <goals><goal>compile</goal></goals>
           </execution>
         </executions>
@@ -38,6 +38,16 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+        <groupId>org.mirah.hudson</groupId>
+        <artifactId>hudson-erb-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <goals><goal>erb-compile</goal></goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -48,4 +58,17 @@
       <version>0.1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>sonatype.snapshots</id>
+      <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>sonatype.snapshots</id>
+      <url>http://oss.sonatype.org/content/repositories/snapshots/</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>
